@@ -1,0 +1,7 @@
+<h1 class="my-4">Shop Name</h1>
+<div class="list-group">
+    {% for i in catlist %}
+  <a href="getProduct?id={{i.id}}" class="list-group-item">{{i.cname}}</a>
+    {% endfor %}
+
+</div>

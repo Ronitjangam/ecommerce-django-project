@@ -1,0 +1,57 @@
+{% load static %}
+<link href="{% static 'css/myapp.css' %}" rel="stylesheet">
+
+
+<!-- Custom styles for this template -->
+<link href="{% static 'css/bmin.css' %}" rel="stylesheet">
+
+
+{% include 'navbar.html' %}
+
+
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        {% for i in page_obj %}
+        <div class="col-lg-4 mt-5 mb-5">
+            <div class="card h-100 ">
+                <a href="#"><img class="card-img-top" src="{{i.pimage}}" alt=""></a>
+                <div class="card-body">
+                <h4 class="card-title">
+                    <a href="#">{{i.pname}}</a>
+                </h4>
+                <h5>{{i.price}} Rs</h5>
+                <p class="card-text">{{i.description}}</p>
+                </div>
+                <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                {% if user.is_authenticated%}
+                    <h5><button class="btn btn-info text-white"><a href="addToCart?pid={{i.id}}" class="text-white">addToCart</a></button></h5>
+                {%else%}
+                    <h5><button class="btn btn-info text-light"><a href="userLogin" class="text-white">addToCart</a></button></h5>
+                {%endif%}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+               <div class="badge badge-primary badge-pill"> <a href="?page=1" class="text-white">&laquo; first</a><br></div>
+               <div class="badge badge-primary badge-pill"><a href="?page={{ page_obj.previous_page_number }}" class="text-white">previous</a></div>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+            <div class="badge badge-primary badge-pill">  <a href="?page={{ page_obj.next_page_number }}" class="text-white">next</a><br></div>
+            <div class="badge badge-primary badge-pill">  <a href="?page={{ page_obj.paginator.num_pages }}" class="text-white">last &raquo;</a></div>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+{% include 'footer.html' %}

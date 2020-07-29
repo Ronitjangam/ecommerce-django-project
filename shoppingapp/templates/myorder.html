@@ -1,0 +1,38 @@
+{% extends 'base.html' %}{% block Main %}
+
+<h1>Hello</h1>
+
+<table class="table">
+<tr>
+    <th>Total bill</th>
+    <th>Order Date</th>
+    <th>Status</th>
+    <th>Name</th>
+
+</tr>
+
+{% for i in orderlist %}
+<tr>
+    <th>{{ i.totalbill }}</th>
+    <th>{{ i.orderdate }}</th>
+    <th>{{ i.status }}</th>
+    <th>{{ i.user.username }}</th>
+
+
+</tr>
+{% endfor %}
+
+
+
+
+</table>
+
+
+
+
+
+
+
+
+
+{% endblock %}

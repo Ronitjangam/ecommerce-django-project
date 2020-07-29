@@ -1,0 +1,20 @@
+{% for i in imagelist %}
+
+<h1>{{i.name}}</h1>
+<img src="{{i.img}}" alt="imgae">
+<h3>{{i.description}}</h3>
+
+{% endfor %}
+
+<form method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    <table cellpading="10" cellspacing="10" border="1">
+    {{form.as_table}}
+    
+    <tr>
+    <td><input type="submit" value="Save"></td>
+    </tr>
+    
+    </table>
+    
+</form>

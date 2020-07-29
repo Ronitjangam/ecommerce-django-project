@@ -1,0 +1,37 @@
+{% load static %}
+<link href="{% static 'css/myapp.css' %}" rel="stylesheet">
+
+
+<!-- Custom styles for this template -->
+<link href="{% static 'css/bmin.css' %}" rel="stylesheet">
+
+
+
+
+
+{% for i in plist %}
+
+<div class="col-lg-4 col-md-6 mb-4 ">
+    
+    <div class="card h-100 border border-primary rounded-0">
+      <a href="#"><img class="card-img-top" src="{{i.pimage}}" alt=""></a>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="#">{{i.pname}}</a>
+        </h4>
+        <h5>{{i.price}} Rs</h5>
+        <p class="card-text">{{i.description}}</p>
+      </div>
+      <div class="card-footer">
+        {% if user.is_authenticated%}
+          <h5><button class="btn btn-info text-white"><a href="addToCart?pid={{i.id}}" class="text-white">addToCart</a></button></h5>
+        {%else%}
+          <h5><button class="btn btn-info text-light"><a href="userLogin" class="text-white">addToCart</a></button></h5>
+{%endif%}
+      </div>
+    </div>
+    
+  </div>
+  {% endfor %}
+
+ 

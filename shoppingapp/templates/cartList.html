@@ -1,0 +1,46 @@
+{% extends 'base.html'%} {%block Main%}
+<form method="POST">
+{% csrf_token %}
+<table cellpading="10" cellspacing="10" border="1" class="table">
+<tr>
+<th>CartId</th>
+<th>ProductName</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Description</th>
+<th>UserName</th>
+<th>Delete</th>
+
+</tr>
+{% for c in cartlist%}
+
+<tr>
+<td>{{c.id}}</td>
+<td>{{c.product.pname}}</td>
+<td><input type="number" value="1"></td>
+<td>{{c.product.price}}</td>
+<td>{{c.product.description}}</td>
+<td>{{c.user.email}}</td>
+<td><a href="">Delete</a></td>
+</tr>
+<br>
+<br>
+<br>
+<br>
+
+
+{%endfor%}
+<tr>
+    <td> <input type="submit" value="Place Order"></td>
+    <td><label>Total Bill</label> <input type="text" name="bill" value= {{ totalbill }}></td>
+</tr>
+ 
+</table>
+</form>
+<br>
+<br>
+<br>
+
+
+
+{%endblock%}

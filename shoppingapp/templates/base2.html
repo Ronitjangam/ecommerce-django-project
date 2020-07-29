@@ -1,0 +1,45 @@
+<!-- Navigation -->
+{%load static%}
+{% include 'navBar.html'%}
+
+<!-- Page Content -->
+<div class="container">
+
+<div class="row">
+
+<!--SideBar-->
+{% include 'sideBar.html'%}
+<!-- /.col-lg-3 -->
+
+<div class="col-lg-9">
+<br><br><br>
+<!--Slider-->
+<form method="POST">
+{%csrf_token%}
+<textarea cols="80" rows="2" name="sp"></textarea>
+<input type="submit" value="Search">
+</form>
+<br><br><br>
+
+<div class="row">
+
+{% block Main%} {%endblock%}
+
+</div>
+<!-- /.row -->
+
+</div>
+<!-- /.col-lg-9 -->
+
+</div>
+<!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+{%include 'footer.html'%}
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'js/jq.js'%}"></script>
+<script src="{% static 'js/b
